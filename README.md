@@ -78,7 +78,8 @@ This project is licensed under the MIT License.
 
 ---
 
-**Author:** Lemi Negeso/lemiti 
-**Field:** Computer Engineering
+**Author:** Lemi Negeso/lemiti
+
+**Field:** Electrical and Computer Engineering(Computer stream)
 
 ---
