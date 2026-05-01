@@ -1,0 +1,19 @@
+[package]
+name = "rust_core"
+version = "0.1.0"
+edition = "2021"
+
+# 🛑 EXPERT REQUIREMENT: Force Rust to build an Android-compatible Shared Object (.so)
+[lib]
+crate-type = ["cdylib", "rlib"]
+name = "legeberew_core" # This will output liblegeberew_core.so
+
+[dependencies]
+# The Mozilla Bridge Library (Using proc-macros for easier Kotlin/JS generation)
+uniffi = { version = "0.27", features = ["cli"] }
+image = "0.24"      # For resizing the image to 224x224
+tract-tflite = "0.21"    # Pure Rust TFLite inference engine
+serde_json = "1.0"       # To format the output for React Native
+
+[build-dependencies]
+uniffi = { version = "0.27", features = ["build"] }

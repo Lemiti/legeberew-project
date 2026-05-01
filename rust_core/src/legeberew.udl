@@ -1,0 +1,7 @@
+namespace legeberew {
+	// This is the function React Native will call!
+	string system_check();
+
+	// Accepts raw image bytes (e.g. from the phone camera) and returnns a JSON string
+	// string diagnose_leaf(sequence<u8> image_bytes);
+};
