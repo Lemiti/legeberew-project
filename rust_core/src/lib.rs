@@ -6,7 +6,7 @@ use serde_json::json;
 uniffi::include_scaffolding!("legeberew");
 
 // 1. Embed the AI model directly into the compiled binary!
-const MODEL_BYTES: &[u8] = include_bytes!("plant_doctor.tflite");
+const MODEL_BYTES: &[u8] = include_bytes!("pristine_plant_doctor.tflite");
 
 pub fn system_check() -> String {
     String::from("✅ LeGeberew Edge Node: Rust Core is Online!")
@@ -37,21 +37,22 @@ pub fn diagnose_leaf(image_bytes: Vec<u8>) -> String {
         Err(_) => return json!({"error": "Failed to build tensor"}).to_string(),
     };
 
-    // E. Load and Run the Model
+ // E. Load and Run the Model
     let model = match tract_tflite::tflite().model_for_read(&mut Cursor::new(MODEL_BYTES)) {
         Ok(m) => m,
-        Err(_) => return json!({"error": "Failed to parse TFLite model"}).to_string(),
+        // CHANGED: We now capture the error 'e' and format it into the JSON
+        Err(e) => return json!({"error": format!("Parse Error: {}", e)}).to_string(),
     };
 
     let runnable = match model.into_runnable() {
         Ok(r) => r,
-        Err(_) => return json!({"error": "Failed to make model runnable"}).to_string(),
+        Err(e) => return json!({"error": format!("Runnable Error: {}", e)}).to_string(),
     };
 
     // Run inference!
     let result = match runnable.run(tvec!(tensor.into())) {
         Ok(res) => res,
-        Err(_) => return json!({"error": "Inference failed"}).to_string(),
+        Err(e) => return json!({"error": format!("Inference Error: {}", e)}).to_string(),
     };
 
     // F. Extract the highest probability (ArgMax)
