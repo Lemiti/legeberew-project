@@ -319,12 +319,12 @@ const renderCropHealth = () => (
         
         <View style={styles.profileRow}>
           <Text style={styles.profileLabel}>Region (ክልል):</Text>
-          <Text style={styles.profileValue}>Oromia (ኦሮሚያ)</Text>
+          <Text style={styles.profileValue}>Gambela (ጋምቤላ)</Text>
         </View>
         <View style={styles.dividerHorizontal} />
 
         <View style={styles.profileRow}>
-          <Text style={styles.profileLabel}>Primary Crop (ዋና ሰብል):</Text>
+          <Text style={styles.profileLabel}>Primary Plant (ዋና ተክል):</Text>
           <Text style={styles.profileValue}>Coffee (ቡና)</Text>
         </View>
         <View style={styles.dividerHorizontal} />
@@ -381,12 +381,12 @@ const renderCropHealth = () => (
       {renderCurrentScreen()}
       <View style={styles.bottomNav}>
         <TouchableOpacity style={styles.navItem} onPress={() => setActiveTab('home')}>
-          <Text style={activeTab === 'home' ? styles.navIconActive : styles.navIcon}>🏠</Text>
+          <Text style={activeTab === 'home' ? styles.navIconActive : styles.navIcon}>🏡</Text>
           <Text style={activeTab === 'home' ? styles.navTextActive : styles.navText}>Home</Text>
         </TouchableOpacity>
         
         <TouchableOpacity style={styles.navItem} onPress={() => setActiveTab('crop')}>
-          <Text style={activeTab === 'crop' ? styles.navIconActive : styles.navIcon}>🌱</Text>
+          <Text style={activeTab === 'crop' ? styles.navIconActive : styles.navIcon}>🌿</Text>
           <Text style={activeTab === 'crop' ? styles.navTextActive : styles.navText}>Crop Health</Text>
         </TouchableOpacity>
         
